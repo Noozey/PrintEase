@@ -3,26 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./style.css">
     <title>printers</title>
     <script src="./script.js"></script>
+    <style>
+        .cross-btn:hover{
+            color: white;
+        }
+        .img-slider{
+            border: transparent;
+            background-color: transparent;
+            font-size: 20px;
+            cursor: pointer;
+            color: red;
+            height: fit-content;
+            margin: auto;
+            transition: 0.5s;
+        }
+        .img-slider:hover{
+            color:black
+        }
+        .product-img{
+            height: fit-content;
+        }
+    </style>
 </head>
 <body>
+    <div id="sidebar"><!--sidebar for small screens -->
+        <button class="cross-btn" onclick="closeDrawer()" style="font-size: 30px; border: none;background-color: transparent; margin-left: auto;padding: 30px;"><!--button to close side bar -->
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <a class="links" href="#">Products</a>
+        <a class="links" href="#">About us</a>
+        <a class="links" href="#">Contact us</a>
+        <a class="links" href="#">News</a>
+    </div>
+    <div id="overlay" onclick="closeDrawer()">
+    </div>
     <nav><!-- navigation of the page -->
-        <img class="logo" src="./img/logo.png">
-        <img class="logoSmall" src="./img/logosmall.png" height="65px" width="auto">
-        <span class="nav">
+        <button class="nav-menu-mobile" onclick="openDrawer()" style="border: none; background-color: transparent; font-size: 25px; margin-left: 15px;"><!--button to open side bar -->
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <img class="logo" src="./img/logo/logo.png">
+        <img class="logoSmall" src="./img/logo/logosmall.png" height="65px" width="auto">
+        <div class="nav-menu">
         <a href="#">Products</a>
         <a href="#">About us</a>
         <a href="#">Contact us</a>
         <a href="#">News</a>
-        </span>
+        </div>
+        
     </nav>
     <div class="main"> <!-- body part of the page -->
          <div class="offers"> <!--offer section -->
-            <a href="#"class="offers_tab" style="text-decoration: none; color: black;">
+            <div class="offers_tab" style="text-decoration: none; color: black;">
                 <div class="offer_discription">
-                <div>
+                <div><!--offers detail-->
                     <p style="text-align: center;font-size: 30px;">Todays Deal</p><!--offer details-->
                     <p style="font-size: 15px;text-decoration: underline;text-align: center;">PIXMA G3770</p>
                     <p style="font-size: 17px;text-align: center;">Wireless Refillable Ink Tank Printer with Low-Cost Printing</p>
@@ -33,20 +70,65 @@
                         <li>Wi-Fi, AirPrint, Mopria, Direct Wireless</li>
                         <li>Recommended Monthly Print Volume: 150 - 1 500 pages</li>
                     </ul>
-                    <p style="text-align: center; font-size: 18px;text-decoration: line-through;">Normal price: 15,000rs</p>
-                    <p style="text-align: center;font-size: 25px;">Now at: 12,000</p>
+                    <p  class="smallscreenhidden" style="text-align: center; font-size: 18px;text-decoration: line-through;">Normal price: 15,000rs</p>
+                    <p style="text-align: center;font-size: 25px;">Now at: 12,000rs</p>
                 </div>
                 </div>
                 <div class="line"></div>
-                <img src="./img/offers/1.png"><!--offer image-->
-            </a>
+                <!--image scroll-->
+                <button class="img-slider" onclick="previousimg()"><i class="fa-solid fa-less-than"></i> </button>
+                <img class="offer-img-1" src="./img/offers/1.png" alt="PIXMA G3770"><!--offer image-->
+                <img class="offer-img-2" src="./img/offers/2.png" alt="PIXMA G3770">
+                <button class="img-slider" onclick="changeimg()"> <i class="fa-solid fa-greater-than"></i> </button>
+            </div>
         </div>
+        <!--all product section-->
         <p style="height:fit-content; font-size: 40px;text-align: center;color: #b0473f;">Products</p>
-        <div class="Product">
-            <div style="margin-left: 5%;" class="products"></div>
-            <div class="products"></div>
-            <div class="products"></div>
+        <div class="product-group">
+            <div class="product">
+                <div class="product-img"><img src="./img/products/1.png" alt="HL-L2321D" height="180px" style="margin: 5%;">
+                    <div style="text-align: center; font-size: 20px;">HL-L2321D</div>
+                    <div style="margin-left: 5%; margin-top: 5%;"><li>Compact</li><br><li>High Speed Laser Printer with Duplex</li></div>
+                    <div style="text-align: center; font-size: 20px; margin-top: 10%;">13000rs</div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img"><img src="./img/products/2.png" alt="HL-T4000DW" height="200px">
+                    <div style="text-align: center; font-size: 20px">HL-T4000DW</div>
+                    <div style="margin-left: 5%; margin-top: 5%;"><li>Compact</li><br><li>High Speed Laser Printer with Duplex</li></div>
+                    <div style="text-align: center; font-size: 20px; margin-top: 10%;">13000rs</div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img"><img src="./img/products/3.png" alt="PIXMA G3770" height="200px">
+                    <div style="text-align: center; font-size: 20px">PIXMA G3770</div>
+                    <div style="margin-top: 5%;"><li>Compact</li><br><li>High Speed Laser Printer with Duplex</li></div>
+                    <div style="text-align: center; font-size: 20px; margin-top: 10%;">13000rs</div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img"><img src="./img/products/4.png" alt="HP OfficeJet Pro 8025e" height="200px">
+                    <div style="text-align: center; font-size: 20px">HP OfficeJet Pro 8025e</div>
+                    <div style="margin-top: 5%;"><li>Compact</li><br><li>High Speed Laser Printer with Duplex</li></div>
+                    <div style="text-align: center; font-size: 20px; margin-top: 10%;">13000rs</div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img"><img src="./img/products/5.png" alt="PIXMA E4570" height="200px" >
+                    <div style="text-align: center; font-size: 20px">PIXMA E4570</div>
+                    <div style="margin-top: 5%;"><li>Compact</li><br><li>High Speed Laser Printer with Duplex</li></div>
+                    <div style="text-align: center; font-size: 20px; margin-top: 10%;">13000rs</div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img"><img src="./img/products/6.png" alt="HL-T4000DW" height="200px">
+                    <div style="text-align: center; font-size: 20px">HL-T4000DW</div>
+                    <div style="margin-top: 5%;"><li>Compact</li><br><li>High Speed Laser Printer with Duplex</li></div>
+                    <div style="text-align: center; font-size: 20px; margin-top: 10%;">13000rs</div>
+                </div>
+            </div>
         </div>
+        <a class="productpg-lingk" href="#" style="text-decoration: none;"><p style="text-align: center; margin-top: 3%;">---------Show more---------</p></a>
         <footer>
             <p style="text-align: center; font-family: Palatino;margin-top: 40px; font-size: 17px;">&copy;PrinterEase.org</p>
         </footer>
